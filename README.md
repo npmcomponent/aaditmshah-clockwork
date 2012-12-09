@@ -1,4 +1,4 @@
-# Lexer #
+# Clockwork #
 
 An elegant, incremental framework which pushes the envelope of JavaScript technology behind a simple and coherent API. It allows programmers to write reusable, extensible and maintainable code using classical object oriented constructs.
 
