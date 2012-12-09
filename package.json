@@ -1,7 +1,7 @@
 {
     "name": "clockworks",
     "description": "An elegant, incremental framework which pushes the envelope of JavaScript technology behind a simple and coherent API. It allows programmers to write reusable, extensible and maintainable code using classical object oriented constructs.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "keywords": ["clockwork", "elegant", "incremental", "framework", "simple", "coherent", "reusable", "extensible", "maintainable", "class", "classical", "object", "oriented", "inheritance", "OOP"],
     "author": "Aadit M Shah (http://aaditmshah.github.com/) <aaditmshah@myopera.com>",
     "main": "lib/clockwork.js",
