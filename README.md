@@ -110,14 +110,17 @@ In addition to core features clockwork also exports every feature used to create
 
 1. Properties
    1. functProto - An alias of `Function.prototype`.
-   2. arrayProto - An alias of `Array.prototype`.
+   2. objectProto - An alias of `Object.prototype`.
+   3. arrayProto - An alias of `Array.prototype`.
 2. Methods
    1. unbind - An alias of `bind.bind`. Used to unbind a function so that it may easily to bound to something else.
    2. callable - An alias of `call.bind`. Used to unbind a function so that it may be called with another `this` pointer.
    3. applicable - An alias of `apply.bind`. Used to unbind a function so that it an array of arguments may be applied to it, with another `this` pointer.
    4. bind - An alias of `bind.apply`. Used to bind an array of arguments along with the `this` pointer to a function.
    5. arrayFrom - An alias of `slice.call`. Used to convert an arguments object into an array.
-   6. instantiate - A special function used to instantiate a constructor using an array of arguments, and an optional `prototype` object.
+   6. classOf - An alias of `objectProto.toString.call`. Used to get the internal [`[[class]]`](http://bonsaiden.github.com/JavaScript-Garden/#types.typeof "JavaScript Garden") of a JavaScript value.
+   7. instantiate - A special function used to instantiate a constructor using an array of arguments, and an optional `prototype` object.
+   8. typeOf - A function that always return the correct type of a JavaScript value. Fixes the [problem](http://bonsaiden.github.com/JavaScript-Garden/#types.typeof "JavaScript Garden") with JavaScript's `typeof` operator.
 
 Since the `instantiate` method is a little ambiguous we'll explain it in more detail with an example:
 
