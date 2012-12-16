@@ -40,7 +40,7 @@ So without further ado let's dive into some actual code:
 var clockwork = require("clockworks");
 var Class = clockwork.Class;
 
-var Rectangle = Class(function () {
+var Rectangle = new Class(function () {
     var width;
     var height;
 
@@ -63,7 +63,7 @@ console.log(rectangle.area());
 In the above program we're creating a simple `Rectangle` class with two private variables `width` and `height`. The `constructor` accepts two arguments and stores them. The public method `area` multiplies and returns the width and height of the instance. It's important to note that the class body function must always return the constructor of the class or else an error will occur. Now let's look at some inheritance:
 
 ```javascript
-var Square = Class(function (uber) {
+var Square = new Class(function (uber) {
     return function (side) {
         uber(side, side);
     };
@@ -73,10 +73,10 @@ var square = new Square(5);
 console.log(square.area());
 ```
 
-Inheritance is as simple as passing the base class to extend as the second argument to the `Class` constructor. Notice that the class body function now accepts a single parameter called `uber`. This is the base class constructor used to initialze the base class. In this example the constructor of `Square` invokes the constructor of `Rectangle`. If we hadn't done so then the method `area` would be `undefined` on the instance of `Square`. Let's proceed:
+Inheritance is as simple as passing the base class/constructor function to extend as the second argument to the `Class` constructor. Notice that the class body function now accepts a single parameter called `uber`. This is the base class constructor used to initialze the base class. In this example the constructor of `Square` invokes the constructor of `Rectangle`. If we hadn't done so then the method `area` would be `undefined` on the instance of `Square`. Let's proceed:
 
 ```javascript
-var Cube = Class(function () {
+var Cube = new Class(function () {
     var side;
 
     function constructor() {
@@ -109,35 +109,26 @@ Clockwork classes have a lot more to them. Like normal constructor functions you
 In addition to core features clockwork also exports every feature used to create the core features. These include various properties and methods:
 
 1. Properties
-   1. functProto - An alias of `Function.prototype`.
-   2. objectProto - An alias of `Object.prototype`.
-   3. arrayProto - An alias of `Array.prototype`.
+   1. classProto - An alias of `clockwork.Class.prototype`.
+   2. functProto - An alias of `Function.prototype`.
 2. Methods
-   1. unbind - An alias of `bind.bind`. Used to unbind a function so that it may easily to bound to something else.
-   2. callable - An alias of `call.bind`. Used to unbind a function so that it may be called with another `this` pointer.
-   3. applicable - An alias of `apply.bind`. Used to unbind a function so that it an array of arguments may be applied to it, with another `this` pointer.
-   4. bind - An alias of `bind.apply`. Used to bind an array of arguments along with the `this` pointer to a function.
-   5. arrayFrom - An alias of `slice.call`. Used to convert an arguments object into an array.
-   6. classOf - An alias of `objectProto.toString.call`. Used to get the internal [`[[class]]`](http://bonsaiden.github.com/JavaScript-Garden/#types.typeof "JavaScript Garden") of a JavaScript value.
-   7. instantiate - A special function used to instantiate a constructor using an array of arguments, and an optional `prototype` object.
-   8. typeOf - A function that always return the correct type of a JavaScript value. Fixes the [problem](http://bonsaiden.github.com/JavaScript-Garden/#types.typeof "JavaScript Garden") with JavaScript's `typeof` operator.
+   1. unbind - An alias of `bind.bind`. Used to unbind a function so that it may easily be bound to something else.
+   2. replacePrototypeOf - Replaces the given prototype in the prototype chain of the specified object with a new prototype.
+   3. instantiate - Creates an instance of a constructor from an array of arguments.
 
-Since the `instantiate` method is a little ambiguous we'll explain it in more detail with an example:
+## Changelog ##
 
-```javascript
-function f(a, b) {
-    console.log(a + b);
-}
+Changes made to the framework are recorded starting from version 0.3.0.
 
-function g(a, b) {
-    console.log(a - b);
-}
+### 0.3.0 ###
 
-var h = instantiate(f, [3, 2], g.prototype); // => 5
-console.log(h instanceof g);                 // => true
-```
+> A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.
+> _Antoine de Saint-Exupéry_
 
-We normally create instances of a function using the `new` keyword. Sometimes however the arguments of the function are in the form of an array or an `arguments` object. In that case we can't simply use the `new` keyword with an `apply`. The `instantiate` function allows us to create an instance of a constructor (the first argument) from an array of arguments (the second argument). An optional third argument is used to specify the `prototype` object used to override the default prototype of the constructor. Hence in the above code although `h` was created from `f` it's actually an instance of `g`.
+1. You can now extend functions which are not classes.
+2. Factored out the `replacePrototypeOf` function from `augment`.
+3. Reduced the complexity of `instantiate`, making it more "perfect".
+4. Removed those additional features which weren't being used. They may be added again in later versions.
 
 ## Contribution ##
 
