@@ -2,6 +2,8 @@
 
 An elegant, incremental framework which pushes the envelope of JavaScript technology behind a simple and coherent API. It allows programmers to write reusable, extensible and maintainable code using classical object oriented constructs.
 
+__Note:__ Clockwork has been deprecated in favor of [augment](https://github.com/javascript/augment "augment").
+
 ## Installation ##
 
 Clockwork can be installed on [node.js](http://nodejs.org/ "node.js") via the [node package manager](https://npmjs.org/ "npm") using the command `npm install clockworks`.
