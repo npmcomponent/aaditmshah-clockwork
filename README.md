@@ -1,3 +1,4 @@
+*This repository is a mirror of the [component](http://component.io) module [aaditmshah/clockwork](http://github.com/aaditmshah/clockwork). It has been modified to work with NPM+Browserify. You can install it using the command `npm install npmcomponent/aaditmshah-clockwork`. Please do not open issues or send pull requests against this repo. If you have issues with this repo, report it to [npmcomponent](https://github.com/airportyh/npmcomponent).*
 # Clockwork #
 
 An elegant, incremental framework which pushes the envelope of JavaScript technology behind a simple and coherent API. It allows programmers to write reusable, extensible and maintainable code using classical object oriented constructs.
